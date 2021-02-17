@@ -42,8 +42,28 @@ This boxplot shows that there a higher amount of people would consume alcohol si
 favstats(alcohol~Seat,data=davisdata)
 ```
 People who sit in the back drink about 9 ounces per week. People who sit in the front drink about 2 ounces per week. People who sit in the middle drink about 3 ounces per week. People who sit in the back drink about 3 times as much as the rest of the class
-## Inferential Tests
+
+
+## Inferential Tests  
+
+
+
+
+# Inferential
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+We reject the null hypothesis due to the p-value being so small that is not likely that the front, middle, and back are at the same alcohol consumption.
+
+
+## When significant follow up with TukeyHSD  
+ 
+```{r}
+plot(TukeyHSD(model1))
+```
+
+The TukeyHSD plot shows that the people in the back drink a lot more than the people in front. Its shows that the people in the back drink more than the poeple in the middle. It also shows that there is no difference in the average alcohol difference between the middle and the front.
 
 ## Conclusions
-
-
+The answer to our goal and question is yes there is a difference. The evidences from all the plots show that people who are consume more alcohol weekly tend to sit in the back of the class 
