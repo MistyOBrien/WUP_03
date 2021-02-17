@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
 ```{r include=FALSE}
@@ -14,8 +14,8 @@ require(tidyverse)
 require(tigerstats)
 davisdata <- read.csv(file="UCDavis.csv")
 ```
-## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
-## you choose to sit in??
+Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
+you choose to sit in??
 
 ## Now with ggplot - first select the basic data
 
@@ -35,8 +35,13 @@ basicCN + geom_boxplot()
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
 
-## Numerical Summarys 
+This boxplot shows that there a higher amount of people would consume alcohol sit in the back of the class.
 
+## Numerical Summarys 
+```{r}
+favstats(alcohol~Seat,data=davisdata)
+```
+People who sit in the back drink about 9 ounces per week. People who sit in the front drink about 2 ounces per week. People who sit in the middle drink about 3 ounces per week. People who sit in the back drink about 3 times as much as the rest of the class
 ## Inferential Tests
 
 ## Conclusions
